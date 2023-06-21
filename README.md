@@ -93,7 +93,7 @@ Explicación: El subarreglo más pequeño con una suma mayor o igual a '7' es [8
 
 Nota: No puedes usar ciclos anidados para resolver el problema.  
 
-**Solucion **
+**Solucion**
 
 La solución propuesta utiliza la técnica del "Sliding Window" (Ventana Deslizante) para encontrar el subarreglo de suma mínima.
 
