@@ -9,19 +9,28 @@ const rl = readline.createInterface({
 // Función para calcular la distancia entre cada carácter de la cadena y el carácter objetivo
 function distanciaMasCorta(s: string, c: string): number[] {
   const distancias: number[] = []; // Arreglo para almacenar las distancias
-  const indiceObjetivo = s.indexOf(c); // Índice de la primera aparición del carácter objetivo en la cadena
 
+  // Recorrer cada posición en la cadena
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === c) {
-      distancias.push(0); // Agrega 0 al arreglo distancias si el carácter es igual al objetivo (distancia 0)
-    } else {
-      const distancia = Math.abs(i - indiceObjetivo); // Calcula la distancia entre el índice actual y el índice objetivo
-      distancias.push(distancia); // Agrega la distancia al arreglo distancias
+    let distancia = Infinity; // Valor inicial infinito para la distancia, actúa como marcador para la distancia más corta
+
+    // Recorrer cada posición en la cadena nuevamente para buscar el carácter objetivo
+    for (let j = 0; j < s.length; j++) {
+      if (s[j] === c) { // Verificar si el carácter en la posición actual es igual al carácter objetivo
+        const nuevaDistancia = Math.abs(i - j); // Calcula la distancia entre el índice actual y el índice objetivo
+
+        if (nuevaDistancia < distancia) {
+          distancia = nuevaDistancia; // Actualiza la distancia si es más corta
+        }
+      }
     }
+
+    distancias.push(distancia); // Agrega la distancia al arreglo de distancias
   }
 
   return distancias; // Devuelve el arreglo de distancias
 }
+
 
 // Preguntar por la cadena s y el carácter c
 rl.question('Ingresa la cadena: ', (s: string) => {
